@@ -1,0 +1,76 @@
+<!-- Body Wrapper -->
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+  <div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="d-flex align-items-center justify-content-center w-100">
+      <div class="row justify-content-center w-100">
+        <div class="col-md-8 col-lg-6 col-xxl-3">
+          <div class="card mb-0 shadow">
+            <div class="card-body">
+
+              <!-- Logo -->
+              <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                <img src="/LogoTaskFlow.png" width="180" alt="TasKFlow">
+              </a>
+
+              <!-- Reactive Login Form -->
+              <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+                <!-- Email -->
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    formControlName="email"
+                    placeholder="Entrez votre email"
+                    [class.is-invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+                  />
+                  <div class="invalid-feedback" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+                    Email invalide
+                  </div>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-4">
+                  <label for="pwd" class="form-label">Mot de passe</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="pwd"
+                    formControlName="password"
+                    placeholder="Entrez votre mot de passe"
+                    [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                  />
+                  <div class="invalid-feedback" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                    Mot de passe requis
+                  </div>
+                </div>
+
+                <!-- Remember Me -->
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                  <div class="form-check">
+                    <input class="form-check-input primary" type="checkbox" id="rememberMe" />
+                    <label class="form-check-label text-dark" for="rememberMe">
+                      Se souvenir de moi
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Error Message -->
+                <div *ngIf="errorMessage" class="alert alert-danger text-center mt-2">
+                  {{ errorMessage }}
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Se connecter</button>
+              </form>
+              <!-- End Form -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

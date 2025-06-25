@@ -10,38 +10,61 @@ import java.util.Date;
 @Component
 public class JwtUtils {
 
-    private final long EXPIRATION = 1000 * 60 * 60 * 24; // 24h
+    // Token validity: 24 hours
+    private static final long EXPIRATION_TIME = 1000 * 60 * 60 * 24;
+
+    // Secret key (in production, use a static, securely stored key!)
     private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-    // ✅ New method that takes email AND role
-    public String generateToken(String email, String role) {
+
+    public String generateToken(String email, String role, Long userId) {
         return Jwts.builder()
-                .setSubject(email)
-                .claim("role", role)  // ✅ Add role as claim
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
+                .setSubject(email) // email as "sub"
+                .claim("role", role)
+                .claim("id", userId)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(key)
                 .compact();
     }
 
+    //Validates the token's signature and expiration
     public boolean validateToken(String token) {
         try {
-            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+            Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .build()
+                    .parseClaimsJws(token);
             return true;
         } catch (JwtException e) {
+            // Log invalid token attempts if needed
             return false;
         }
     }
 
+    //Extracts the subject (email) from the token
     public String extractEmail(String token) {
-        return Jwts.parserBuilder().setSigningKey(key).build()
-                .parseClaimsJws(token)
-                .getBody().getSubject();
+        return getClaims(token).getSubject();
     }
 
-    // ✅ Optional: Extract role if needed
+    //Extracts the role from the token
     public String extractRole(String token) {
-        return Jwts.parserBuilder().setSigningKey(key).build()
+        return getClaims(token).get("role", String.class);
+    }
+
+
+    //Extracts the user ID from the token
+    public Long extractUserId(String token) {
+        return getClaims(token).get("id", Long.class);
+    }
+
+
+    //Utility to extract claims
+    private Claims getClaims(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
                 .parseClaimsJws(token)
-                .getBody().get("role", String.class);
+                .getBody();
     }
 }
