@@ -64,6 +64,11 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/admins/**").hasRole("ADMIN")
                         .requestMatchers("/api/chefs/**", "/api/membres/**").authenticated()
+                        .requestMatchers("/api/conges/**").hasRole("ADMIN")
+                        .requestMatchers("/api/equipes/**").hasRole("ADMIN")
+                        .requestMatchers("/api/jours-feries/**").hasRole("ADMIN")
+                        .requestMatchers("/api/projets/**").hasRole("ADMIN")
+                        .requestMatchers("/api/taches/**").hasRole("ADMIN")
                 .anyRequest().authenticated();
 
         http.authenticationProvider(authenticationProvider());
