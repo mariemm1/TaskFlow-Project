@@ -1,0 +1,7 @@
+flask
+pymysql
+pandas
+numpy
+scikit-learn
+joblib
+tabulate
