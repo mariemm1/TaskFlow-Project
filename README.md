@@ -7,7 +7,7 @@ A full-stack **task assignment and project management system** for teams, built 
 ## 📐 UML Diagrams
 
 ### ✅ Use Case Diagram  
-![Use Case Diagram](./docs/use_case_diagram.png)
+![Use Case Diagram](/images/img.png)
 
 ### ✅ Class Diagram  
 ![Class Diagram](./docs/class_diagram.png)
