@@ -143,8 +143,13 @@ export class AuthService {
     });
   }
 
+
   // 🔍 API call to fetch user by email
   getUserByEmail(email: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/getUserByEmail/${email}`);
+    const headers = this.getHeaders(); // includes Bearer token
+    return this.http.get(`http://localhost:8081/api/users/email/${email}`, { headers });
   }
+
+
+
 }
