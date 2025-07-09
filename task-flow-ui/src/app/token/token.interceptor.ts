@@ -1,9 +1,11 @@
+// src/app/interceptors/token.interceptor.ts
 import { Injectable } from '@angular/core';
 import {
   HttpInterceptor,
   HttpRequest,
   HttpHandler,
-  HttpEvent
+  HttpEvent,
+  HTTP_INTERCEPTORS
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/authService/auth.service';

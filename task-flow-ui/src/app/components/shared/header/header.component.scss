@@ -1,0 +1,75 @@
+.app-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f0f4ff;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 20px;
+  font-size: 14px;
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .logo {
+      height: 30px;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #004085;
+    }
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .greeting {
+      font-weight: 600;
+      color: #333;
+    }
+
+    .role-badge {
+      background-color: #007bff;
+      color: white;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #f0f4ff;
+      border: 2px solid #f0f4ff;
+      z-index: 10000;
+      padding: 8px;
+      display: block;
+
+      a {
+        color: black;
+        text-decoration: none;
+        display: block;
+        padding: 6px 12px;
+
+        &:hover {
+          background-color: #f0f4ff;
+        }
+      }
+    }
+
+
+
+
+
+
+
+  }
+}
