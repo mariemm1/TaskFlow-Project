@@ -5,6 +5,6 @@ export interface Membre {
   email: string;
   motDePasse: string;
   competences: string[];
-  postMembre: string;
+  postMembre?: string;
   role?: string;
 }

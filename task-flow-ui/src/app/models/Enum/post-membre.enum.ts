@@ -1,0 +1,5 @@
+export enum PostMembre {
+  DEVELOPPEUR = 'DEVELOPPEUR',
+  TESTEUR = 'TESTEUR',
+  DESIGNER = 'DESIGNER'
+}
