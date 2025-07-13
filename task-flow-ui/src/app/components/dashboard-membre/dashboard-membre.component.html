@@ -1,6 +1,13 @@
-<app-header></app-header>
-<app-sidebar></app-sidebar>
-<div class="dashboard-content">
-  <h2>Admin Dashboard</h2>
-  <router-outlet></router-outlet>
+<div class="dashboard-layout">
+  <app-sidebar></app-sidebar>
+
+  <div class="main-content">
+    <app-header></app-header>
+
+    <div class="content-body">
+      <h2>Membre Dashboard</h2>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
+

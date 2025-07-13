@@ -1,22 +1,18 @@
 <header class="app-header">
   <div class="header-left">
-    <img src="/LogoTaskFlow.png" alt="Logo" class="logo" />
+    <span class="role-badge">{{ role }}</span>
     <span class="title">Dashboard</span>
   </div>
 
   <div class="header-right">
     <span class="greeting">👋 Hello, {{ userName }}</span>
-    <span class="role-badge">{{ role }}</span>
 
-    <div class="dropdown">
-      <div class="dropdown-toggle" (click)="toggleDropdown()">⚙️</div>
+    <div class="dropdown-toggle" (click)="toggleDropdown()">⚙️</div>
 
-      <div *ngIf="dropdownOpen" class="dropdown-menu">
-        <a routerLink="/profile">🧑‍ Profile</a>
-        <a (click)="logout()">↩️ Logout</a>
-      </div>
+    <div *ngIf="dropdownOpen" class="dropdown-menu">
+      <a routerLink="/profile">🧑‍ Profile</a>
+      <a (click)="logout()">↩️ Logout</a>
     </div>
-
-
   </div>
+
 </header>
