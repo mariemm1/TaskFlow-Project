@@ -1,83 +1,88 @@
 <nav class="sidebar">
+  <div class="brand-logo d-flex align-items-center justify-content-between">
+    <img src="/LogoTaskFlow.png" width="180" alt="TaskFlow" />
+  </div>
+
   <ul>
-    <!-- 🔑 Admin Panel -->
+    <!-- ADMIN -->
     <ng-container *ngIf="role === 'ADMIN'">
 
 
-      <li (click)="toggleMenu('admins')">👥 Manage Admins</li>
-      <ul *ngIf="openMenus['admins']" class="submenu">
+      <li (click)="toggleMenu('admins')" class="sidebar-item">👥 Manage Admins</li>
+      <ul *ngIf="openMenus['admins']" class="nav-collapse">
         <li><a routerLink="/admin/add-admin">➕ Add Admin</a></li>
         <li><a routerLink="/admin/admins/list-admins">📋 View Admins</a></li>
       </ul>
 
-      <li (click)="toggleMenu('chefs')">👥 Manage Chefs</li>
-      <ul *ngIf="openMenus['chefs']" class="submenu">
+      <li (click)="toggleMenu('chefs')" class="sidebar-item">👥 Manage Chefs</li>
+      <ul *ngIf="openMenus['chefs']" class="nav-collapse">
         <li><a routerLink="/admin/add-chef">➕ Add Chef</a></li>
         <li><a routerLink="/admin/chefs/list-chefs">📋 View Chefs</a></li>
       </ul>
 
-      <li (click)="toggleMenu('membres')">👥 Manage Membres</li>
-      <ul *ngIf="openMenus['membres']" class="submenu">
+      <li (click)="toggleMenu('membres')" class="sidebar-item">👥 Manage Membres</li>
+      <ul *ngIf="openMenus['membres']" class="nav-collapse">
         <li><a routerLink="/admin/add-membre">➕ Add Membre</a></li>
         <li><a routerLink="/admin/membres/list-membres">📋 View Membres</a></li>
       </ul>
 
-      <li (click)="toggleMenu('equipes')">🏢 Equipes</li>
-      <ul *ngIf="openMenus['equipes']" class="submenu">
+      <li (click)="toggleMenu('equipes')" class="sidebar-item">🏢 Equipes</li>
+      <ul *ngIf="openMenus['equipes']" class="nav-collapse">
         <li><a routerLink="/admin/equipes/add-equipe">➕ Add Equipe</a></li>
         <li><a routerLink="/admin/equipes/list-equipes">📋 View Equipes</a></li>
       </ul>
 
-      <li (click)="toggleMenu('projets')">📂 Projets</li>
-      <ul *ngIf="openMenus['projets']" class="submenu">
+      <li (click)="toggleMenu('projets')" class="sidebar-item">📂 Projets</li>
+      <ul *ngIf="openMenus['projets']" class="nav-collapse">
         <li><a routerLink="/admin/projets/add-projet">➕ Add Projet</a></li>
         <li><a routerLink="/admin/projets/list-projets">📋 View Projets</a></li>
       </ul>
 
-      <li (click)="toggleMenu('taches')">📝 Tâches</li>
-      <ul *ngIf="openMenus['taches']" class="submenu">
+      <li (click)="toggleMenu('taches')" class="sidebar-item">📝 Tâches</li>
+      <ul *ngIf="openMenus['taches']" class="nav-collapse">
         <li><a routerLink="/admin/taches/add-tache">➕ Add Tâche</a></li>
         <li><a routerLink="/admin/taches/list-taches">📋 View Tâches</a></li>
       </ul>
 
-      <li (click)="toggleMenu('conges')">🏖️ Congés</li>
-      <ul *ngIf="openMenus['conges']" class="submenu">
-        <li><a routerLink="/admin/conges/add-conge">➕ Add Congés</a></li>
+      <li (click)="toggleMenu('conges')" class="sidebar-item">🏖️ Congés</li>
+      <ul *ngIf="openMenus['conges']" class="nav-collapse">
+        <li><a routerLink="/admin/conges/add-conge">➕ Add Congé</a></li>
         <li><a routerLink="/admin/conges/list-conges">📋 View Congés</a></li>
       </ul>
 
-      <li (click)="toggleMenu('joursFeries')">📅 Jours Fériés</li>
-      <ul *ngIf="openMenus['joursFeries']" class="submenu">
-        <li><a routerLink="/admin/jours-feries/add-jours-feries">➕ Add Jours-Feries</a></li>
-        <li><a routerLink="/admin/jours-feries/list-jours-feries">📋 View Jours-Feries</a></li>
+      <li (click)="toggleMenu('joursFeries')" class="sidebar-item">📅 Jours Fériés</li>
+      <ul *ngIf="openMenus['joursFeries']" class="nav-collapse">
+        <li><a routerLink="/admin/jours-feries/add-jours-feries">➕ Add Jours-Fériés</a></li>
+        <li><a routerLink="/admin/jours-feries/list-jours-feries">📋 View Jours-Fériés</a></li>
       </ul>
     </ng-container>
 
-    <!-- 👨‍💼 Chef Equipe -->
+    <!-- CHEF -->
     <ng-container *ngIf="role === 'CHEF_EQUIPE'">
 
 
-      <li (click)="toggleMenu('chefProjets')">📂 Projets</li>
-      <ul *ngIf="openMenus['chefProjets']" class="submenu">
+
+      <li (click)="toggleMenu('chefProjets')" class="sidebar-item">📂 Projets</li>
+      <ul *ngIf="openMenus['chefProjets']" class="nav-collapse">
         <li><a routerLink="/chef/projets/add-projet">➕ Add Projet</a></li>
         <li><a routerLink="/chef/projets/list-projets">📋 View Projets</a></li>
       </ul>
 
-      <li (click)="toggleMenu('chefTaches')">📝 Tâches</li>
-      <ul *ngIf="openMenus['chefTaches']" class="submenu">
-        <li><a routerLink="/chef/taches/add-tache">➕ Add Tache</a></li>
-        <li><a routerLink="/chef/taches/list-taches">📋 View Taches</a></li>
-        <li><a routerLink="/chef/taches/assign-tache">👤 Assign Tache</a></li>
+      <li (click)="toggleMenu('chefTaches')" class="sidebar-item">📝 Tâches</li>
+      <ul *ngIf="openMenus['chefTaches']" class="nav-collapse">
+        <li><a routerLink="/chef/taches/add-tache">➕ Add Tâche</a></li>
+        <li><a routerLink="/chef/taches/list-taches">📋 View Tâches</a></li>
+        <li><a routerLink="/chef/taches/assign-tache">👤 Assign Tâche</a></li>
       </ul>
 
-      <li><a routerLink="/chef/recommendation">🤖 Recommandation IA</a></li>
+      <li class="sidebar-item"><a routerLink="/chef/recommendation">🤖 Recommandation IA</a></li>
     </ng-container>
 
-    <!-- 👷‍♂️ Membre -->
+    <!-- MEMBRE -->
     <ng-container *ngIf="role === 'MEMBRE'">
 
-      <li><a routerLink="/membre/my-tasks">✅ Mes Tâches</a></li>
-      <li><a routerLink="/membre/conges">🏖️ Mes Congés</a></li>
+      <li class="sidebar-item"><a routerLink="/membre/my-tasks">✅ Mes Tâches</a></li>
+      <li class="sidebar-item"><a routerLink="/membre/conges">🏖️ Mes Congés</a></li>
     </ng-container>
 
   </ul>

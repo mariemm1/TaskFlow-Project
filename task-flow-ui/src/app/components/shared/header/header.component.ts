@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../../../services/authService/auth.service';
-import {CommonModule, NgIf} from '@angular/common';
-import {Router, RouterModule} from '@angular/router';
-
+import { AuthService } from '../../../services/authService/auth.service';
+import { CommonModule, NgIf } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -35,11 +34,9 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  toggleDropdown() {
+  toggleDropdown(): void {
     this.dropdownOpen = !this.dropdownOpen;
-    console.log('Dropdown toggled:', this.dropdownOpen);
   }
-
 
   logout(): void {
     this.authService.logout();
